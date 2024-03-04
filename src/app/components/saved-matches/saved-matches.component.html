@@ -1,0 +1,40 @@
+<div class="container my-5" *ngIf="savedMatches && savedMatches.length > 0">
+    <h1 class="mb-3">Saved Match List</h1>
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark" class="text-center">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Country</th>
+                <th>Category</th>
+                <th>Verified</th>
+                <th>URL</th>
+                <th>Favorite</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            <tr *ngFor="let venue of savedMatches">
+                <td>{{ venue.id }}</td>
+                <td>{{ venue.name }}</td>
+                <td>{{ venue.contact?.phone }}</td>
+                <td>{{ venue.location?.address }}</td>
+                <td>{{ venue.location?.city }}</td>
+                <td>{{ venue.location?.state }}</td>
+                <td>{{ venue.location?.country }}</td>
+                <td>{{ venue.categories[0]?.name }}</td>
+                <td>{{ venue.verified }}</td>
+                <td><a href="{{ venue.url }}" target="_blank">{{ venue.url }}</a></td>
+                <td>
+                    <i class="fas fa-star" [ngClass]="{ 'active': isSavedMatch(venue) }"
+                        (click)="toggleSavedMatch(venue)">
+                    </i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p *ngIf="!savedMatches || savedMatches.length <= 0"> No Data Found</p>

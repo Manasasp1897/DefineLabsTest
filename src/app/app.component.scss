@@ -1,0 +1,18 @@
+.sidenav-container {
+    height: 100%;
+  }
+  
+  mat-sidenav {
+    width: 200px;
+  }
+  
+  mat-sidenav-content {
+    padding: 20px;
+  }
+
+  .active-link {
+    background-color: #f0f0f0;
+    color: #333;
+    font-weight: bold;
+  }
+  
